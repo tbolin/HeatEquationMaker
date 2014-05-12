@@ -27,21 +27,6 @@ cap = 2.5; % Värmekapacitet
 solution = solve_temp_Q(F, B, q, r_scale, k);
 % lös
 timed = solve_time_change(F, B, 0, solution, r_scale, t_scale, drop, k, dens, cap)
-% Plotta
-% for i=1:size(timed, 3)
-% 	clf
-%     view(3);
-%     S = timed(:,:,i);
-%     surf(r_scale, r_scale, S, 'LineStyle', 'none')
-%     pause(10*dt*drop)
-% end
-
-% lös och plotta steady-state
-% steady = figure();
-% solution = solve_temp(F, B);
-% surf(r_scale, r_scale, solution, 'LineStyle', 'none')
-% contour(all(F,3), [1 1], 'LineWidth',2, 'LineColor', 'k')
-% contour(solution, 5, 'LineColor', 'k', 'ShowText', 'on')
 
 
 

@@ -23,7 +23,7 @@ k = 0.8;
 dens = 1; % densitet
 cap = 2.5; % Värmekapacitet
 
-% S�tt plottstorlek
+% S�tt plottstorlek
 figure('units','normalized', 'position',[0.1 0.2 0.85 0.5])
 
 % Lös steady-state för att hitta utgångslöget
@@ -52,11 +52,6 @@ for i=1:size(timed, 3)
     axis([-1 1 -1 1 -6 30])
     pause(10*dt*drop)
 end
-input()
-q_plot = figure();
-surf(r_scale, r_scale, q, 'LineStyle', 'none')
-% contour(all(F,3), [1 1], 'LineWidth',2, 'LineColor', 'k')
-% contour(solution, 5, 'LineColor', 'k', 'ShowText', 'on')
 
 
 

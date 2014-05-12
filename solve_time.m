@@ -67,28 +67,14 @@ function [ frames ] = solve_time(F, B, Q, T0, r_scale, t_scale, drop, k, dens, c
         % beräkningar
         Ty = Lower\(T+(A*T)+b);
         T = Uper\(Ty);
-%         S = B;
         if mod(count,drop)==0
-%             S = B;
             S(k_ind) = T;
-            frames(:,:,floor(count/drop)) = S;
+            frames(:,:,floor(count/drop)+1) = S;
         end
         count = count + 1;
-        %plottar
-%         clf
-%         view(3);
-%         surf(S, 'LineStyle', 'none')
-%         contourf(S, 50, 'LineStyle', 'none')
-%         contour(all(G, 3), [1 1], 'LineWidth',2, 'LineColor', 'k')
-        %contour(S, 5, 'LineColor', 'k', 'ShowText', 'on')
-        %hold off
-%         pause(0.1*dt)
     end
     S(k_ind) = T;
     frames(:,:,end) = S;
-%     hold on
-%     contour(all(F, 3), [1 1], 'LineWidth',2, 'LineColor', 'k')
-%     contour(S, 5, 'LineColor', 'k', 'ShowText', 'on') 
 end
 
 

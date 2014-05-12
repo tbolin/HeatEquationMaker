@@ -7,7 +7,7 @@ function [ time ] = solve_time_change(F, B, Q, T0, r_scale, t_scale, drop, k, de
 %   Q   Matris med tillförd värme per ytenhet
 %   områdets diskretisering
 %   UT
-%   time   Tiden d� temp �r inom 99% av steady state.
+%   time   Tiden då temp är inom 99% av steady state.
     steady = solve_temp_Q(F, B, Q, r_scale, k); % Ber�kna stedy state
     B = B.*(~F);  % Tar bort inre punkter från randmatrisen
     k_ind=find(F);      % Index i F sedd som vektor för alla nollskillda element i F.
@@ -38,8 +38,14 @@ function [ time ] = solve_time_change(F, B, Q, T0, r_scale, t_scale, drop, k, de
     end
     %%% Här börjar tidsberoende
     
-    dx = r_scale(2)-r_scale(1);
-    dt = t_scale(2)-t_scale(1);
+    dx = r_scale(2)-r_scale(1); % Beräkna rumssteget
+    % tidssteget kan antingen beräknas från en vektor eller ges som en
+    % skalär
+    if isscalar(t_scale)
+        dt = t_scale;
+    else
+        dt = t_scale(2)-t_scale(1);
+    end
     
     % Initialvärden
     T = T0(k_ind);
