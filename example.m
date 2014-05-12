@@ -1,6 +1,6 @@
-clear all, close all, clc
+%clear all, close all, clc
 
-n = 99; 		% Upplösningen på området
+n = 29; 		% Upplösningen på området
 v = -1:1/n:1;	% Områdets omfattning
 [X, Y] = meshgrid(v); % Skapar nxn X- och Y-matriser (så mycket snyggare än den gamla)
 
